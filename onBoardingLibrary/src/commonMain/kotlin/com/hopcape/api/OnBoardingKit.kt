@@ -5,9 +5,15 @@ import com.hopcape.api.config.OnBoardingConfigBuilder
 
 interface OnBoardingKit {
 
+    companion object {
+        var configuration: OnBoardingConfig? = null
+    }
     /**
      * */
-    fun configure(configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig)
+    fun configure(
+        context: OnBoardingContext,
+        configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig
+    )
 
     fun start(
         onComplete: () -> Unit

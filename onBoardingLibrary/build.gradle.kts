@@ -16,7 +16,6 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-
     listOf(
         iosX64(),
         iosArm64(),
@@ -35,18 +34,20 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
+            implementation(libs.coil.compose.core)
+            implementation(libs.coil.compose)
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodel)
+            implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            implementation("media.kamel:kamel-image-default:1.0.0")
         }
     }
 }
-
 android {
     namespace = "com.hopcape.onboarding"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
@@ -72,6 +73,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.lifecycle.common.jvm)
     debugImplementation(compose.uiTooling)
 }
 
