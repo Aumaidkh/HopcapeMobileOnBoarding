@@ -4,18 +4,29 @@ import com.hopcape.api.config.OnBoardingConfig
 import com.hopcape.api.config.OnBoardingConfigBuilder
 
 class OnBoardingKitImpl: OnBoardingKit {
-
-    private lateinit var config: OnBoardingConfig
     /**
      * */
-    override fun configure(configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig) {
-        val onBoardingConfigBuilder = OnBoardingConfigBuilder()
-        config = onBoardingConfigBuilder.configBuilder()
+    override fun configure(
+        context: OnBoardingContext,
+        configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig
+    ) {
+        val onBoardingConfigBuilder = OnBoardingConfigBuilder(context)
+        OnBoardingKit.configuration = onBoardingConfigBuilder.configBuilder()
     }
 
     override fun start(onComplete: () -> Unit) {
-        if (!::config.isInitialized){
+        if (OnBoardingKit.configuration == null){
             throw IllegalStateException("No Onboarding config found, did you forget to call configure")
         }
+        if (isUserAlreadyOnBoarded()){
+            onComplete()
+            return
+        }
+
+        OnBoardingKit.configuration?.context?.launchOnBoarding()
+    }
+
+    private fun isUserAlreadyOnBoarded(): Boolean {
+        return false
     }
 }

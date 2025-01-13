@@ -20,6 +20,13 @@ class OnBoardingThemeBuilder {
             )
         }
 
+    fun setPrimaryColorArgb(color: Long) =
+        apply {
+            onBoardingTheme = onBoardingTheme.copy(
+                primaryColor = Color(color)
+            )
+        }
+
     fun setSecondaryColor( color: Color ) =
         apply {
             onBoardingTheme = onBoardingTheme.copy(
