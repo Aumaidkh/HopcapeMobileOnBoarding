@@ -1,5 +1,10 @@
 package com.hopcape.onboarding
 
-import androidx.compose.ui.window.ComposeUIViewController
+import com.hopcape.api.OnBoardingKit
+import com.hopcape.api.OnBoardingKitImpl
+import platform.UIKit.UIViewController
 
-fun MainViewController() = ComposeUIViewController { App() }
+fun MainViewController(): UIViewController {
+    val onBoardingKit: OnBoardingKit = OnBoardingKitImpl()
+    return com.hopcape.presentation.composeUIViewController
+}
