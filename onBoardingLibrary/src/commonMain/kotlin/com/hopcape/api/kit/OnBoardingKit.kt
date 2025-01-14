@@ -1,4 +1,4 @@
-package com.hopcape.api
+package com.hopcape.api.kit
 
 import com.hopcape.api.config.OnBoardingConfig
 import com.hopcape.api.config.OnBoardingConfigBuilder

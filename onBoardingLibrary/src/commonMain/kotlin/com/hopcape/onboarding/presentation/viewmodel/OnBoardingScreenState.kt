@@ -1,6 +1,6 @@
 package com.hopcape.onboarding.presentation.viewmodel
 
-import com.hopcape.api.OnBoardingPage
+import com.hopcape.api.page.OnBoardingPage
 
 data class OnBoardingScreenState(
     val pages: List<OnBoardingPage> = emptyList(),

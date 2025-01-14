@@ -7,7 +7,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import com.hopcape.api.OnBoardingPage
+import com.hopcape.api.page.OnBoardingPage
 import com.hopcape.onboarding.presentation.ui.OnBoardingBottomBar
 import com.hopcape.onboarding.presentation.ui.OnBoardingPage
 import com.hopcape.onboarding.presentation.viewmodel.OnBoardingAction
