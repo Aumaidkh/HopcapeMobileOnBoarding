@@ -1,4 +1,4 @@
-package com.hopcape.onboarding.presentation.viewmodel
+package com.hopcape.mobile.onboarding.presentation.viewmodel
 
 /**
  * A wrapper around all the actions user can be able to perform with the

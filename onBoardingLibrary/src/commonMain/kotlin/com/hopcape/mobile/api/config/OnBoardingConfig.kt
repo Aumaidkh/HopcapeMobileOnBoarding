@@ -1,8 +1,8 @@
-package com.hopcape.api.config
+package com.hopcape.mobile.api.config
 
 import androidx.compose.ui.graphics.Color
-import com.hopcape.api.page.OnBoardingPage
-import com.hopcape.api.theme.OnBoardingTheme
+import com.hopcape.mobile.api.page.OnBoardingPage
+import com.hopcape.mobile.api.theme.OnBoardingTheme
 
 /**
  * Represents the configuration for the onboarding flow.

@@ -3,6 +3,10 @@ package com.hopcape.api.theme
 import kotlin.test.Test
 
 import androidx.compose.ui.graphics.Color
+import com.hopcape.mobile.api.theme.DefaultLightTheme
+import com.hopcape.mobile.api.theme.defaultBackgroundColor
+import com.hopcape.mobile.api.theme.defaultPrimaryColor
+import com.hopcape.mobile.api.theme.defaultSecondaryColor
 import kotlin.test.assertEquals
 
 /**

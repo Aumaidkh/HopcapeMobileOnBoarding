@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.ComposeUIViewController
-import com.hopcape.onboarding.presentation.OnBoardingApp
+import com.hopcape.mobile.onboarding.presentation.OnBoardingApp
 
 val composeUIViewController = ComposeUIViewController(
     configure = {

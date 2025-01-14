@@ -8,9 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.hopcape.api.kit.OnBoardingKit
-import com.hopcape.api.kit.OnBoardingKitImpl
-import com.hopcape.api.page.OnBoardingPage
+import com.hopcape.mobile.api.kit.OnBoardingKit
+import com.hopcape.mobile.api.kit.OnBoardingKitImpl
+import com.hopcape.mobile.api.page.OnBoardingPage
 import com.hopcape.api.launcher.AndroidOnBoardingLauncher
 
 private const val TAG = "MainActivity"
@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     OnBoardingPage(
                         title = "Find and Book Doctors with Ease",
                         body = "Search for specialists near you, view their profiles, and book appointments in just a few taps. No waiting, no hassle.",
-                        illustrationImage = com.hopcape.onboarding.R.drawable.undraw_love,
+                        illustrationImage = R.drawable.undraw_love,
                         textColor = 0L,
                         bodyColor = 0L
                     )
@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     OnBoardingPage(
                         title = "Order Medicines, Anytime",
                         body = "Shop for prescriptions and over-the-counter medicines from trusted pharmacies, and get them delivered to your doorstep.",
-                        illustrationImage = com.hopcape.onboarding.R.drawable.undraw_love,
+                        illustrationImage = R.drawable.undraw_love,
                         textColor = 0L,
                         bodyColor = 0L
                     )
@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
                     OnBoardingPage(
                         title = "We're Here for You",
                         body = "Need help? Our support team is available around the clock to assist you with your healthcare needs.",
-                        illustrationImage = com.hopcape.onboarding.R.drawable.undraw_love,
+                        illustrationImage = R.drawable.undraw_love,
                         textColor = 0L,
                         bodyColor = 0L
                     )

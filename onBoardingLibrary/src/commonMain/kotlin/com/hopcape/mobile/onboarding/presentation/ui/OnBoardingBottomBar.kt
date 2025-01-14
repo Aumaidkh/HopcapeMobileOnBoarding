@@ -1,4 +1,4 @@
-package com.hopcape.onboarding.presentation.ui
+package com.hopcape.mobile.onboarding.presentation.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -8,12 +8,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.hopcape.api.kit.OnBoardingKit
-import com.hopcape.api.config.background
-import com.hopcape.api.config.primaryColor
-import com.hopcape.mobile.onboarding.onboardinglibrary.generated.resources.Res
-import com.hopcape.mobile.onboarding.onboardinglibrary.generated.resources.arrow_left
-import com.hopcape.mobile.onboarding.onboardinglibrary.generated.resources.arrow_right
+import com.hopcape.mobile.api.kit.OnBoardingKit
+import com.hopcape.mobile.api.config.background
+import com.hopcape.mobile.api.config.primaryColor
+import onboarding.onboardinglibrary.generated.resources.Res
+import onboarding.onboardinglibrary.generated.resources.arrow_left
+import onboarding.onboardinglibrary.generated.resources.arrow_right
 
 @Composable
 fun OnBoardingBottomBar(

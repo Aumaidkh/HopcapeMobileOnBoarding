@@ -1,4 +1,4 @@
-package com.hopcape.onboarding.presentation.ui
+package com.hopcape.mobile.onboarding.presentation.ui
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -12,9 +12,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.hopcape.api.kit.OnBoardingKit
-import com.hopcape.api.config.primaryColor
-import com.hopcape.api.config.secondaryColor
+import com.hopcape.mobile.api.kit.OnBoardingKit
+import com.hopcape.mobile.api.config.primaryColor
+import com.hopcape.mobile.api.config.secondaryColor
 
 /**
  * Page Indicator showing multiple dots

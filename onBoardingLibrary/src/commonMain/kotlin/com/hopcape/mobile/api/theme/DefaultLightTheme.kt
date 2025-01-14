@@ -1,4 +1,4 @@
-package com.hopcape.api.theme
+package com.hopcape.mobile.api.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package com.hopcape.onboarding.presentation.ui
+package com.hopcape.mobile.onboarding.presentation.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,7 +20,7 @@ import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.request.ImageRequest
 import coil3.svg.SvgDecoder
-import com.hopcape.api.page.OnBoardingPage
+import com.hopcape.mobile.api.page.OnBoardingPage
 
 @Composable
 fun OnBoardingPage(

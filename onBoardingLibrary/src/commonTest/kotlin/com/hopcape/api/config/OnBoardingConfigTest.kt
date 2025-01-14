@@ -4,8 +4,12 @@ import kotlin.test.Test
 
 
 import androidx.compose.ui.graphics.Color
-import com.hopcape.api.theme.DefaultLightTheme
-import com.hopcape.api.theme.OnBoardingTheme
+import com.hopcape.mobile.api.theme.DefaultLightTheme
+import com.hopcape.mobile.api.theme.OnBoardingTheme
+import com.hopcape.mobile.api.config.OnBoardingConfig
+import com.hopcape.mobile.api.config.background
+import com.hopcape.mobile.api.config.primaryColor
+import com.hopcape.mobile.api.config.secondaryColor
 import kotlin.test.assertEquals
 
 /**

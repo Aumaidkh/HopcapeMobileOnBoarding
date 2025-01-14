@@ -1,5 +1,6 @@
 package com.hopcape.api.page
 
+import com.hopcape.mobile.api.page.OnBoardingPage
 import kotlin.test.DefaultAsserter.assertEquals
 import kotlin.test.DefaultAsserter.assertNotNull
 import kotlin.test.Test
