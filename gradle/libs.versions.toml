@@ -17,6 +17,7 @@ junit = "4.13.2"
 kamel = "1.0.0"
 kotlin = "2.1.0"
 lifecycleCommonJvm = "2.8.7"
+mokkery = "2.6.1"
 viewModel = "2.8.2"
 
 [libraries]
@@ -44,3 +45,4 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+mokkery = { id = "dev.mokkery", version.ref = "mokkery" }
