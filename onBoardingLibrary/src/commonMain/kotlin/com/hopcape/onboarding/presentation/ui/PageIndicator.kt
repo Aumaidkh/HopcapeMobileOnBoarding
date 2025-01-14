@@ -12,7 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.hopcape.api.OnBoardingKit
+import com.hopcape.api.kit.OnBoardingKit
 import com.hopcape.api.config.primaryColor
 import com.hopcape.api.config.secondaryColor
 
