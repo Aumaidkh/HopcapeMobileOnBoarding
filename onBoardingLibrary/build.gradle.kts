@@ -105,7 +105,7 @@ publishing {
         // Configure GitHub Packages
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/your-username/your-repository")
+            url = uri("https://maven.pkg.github.com/Aumaidkh/HopcapeMobileOnBoarding")
             credentials {
                 username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
