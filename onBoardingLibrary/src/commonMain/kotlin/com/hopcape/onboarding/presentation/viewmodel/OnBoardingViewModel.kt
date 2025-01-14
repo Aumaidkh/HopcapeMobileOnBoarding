@@ -95,7 +95,7 @@ class OnBoardingViewModel: ViewModel() {
      * @return `true` if the current page is the last page; otherwise, `false`.
      */
     private fun isLastPage() =
-        _state.value.pageNumber == _state.value.pages.size-1
+        _state.value.pageNumber > _state.value.pages.size - 1
 
     /**
      * Checks if the current page is the first page in the onboarding flow.
