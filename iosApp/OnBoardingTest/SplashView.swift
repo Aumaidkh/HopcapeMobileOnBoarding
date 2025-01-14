@@ -15,6 +15,7 @@ struct SplashView: View {
             Text("Splash View")
                 .onAppear{
                     if let rootWindow = UIApplication.shared.windows.first {
+                        let onBoardingLauncher = IOSOnBoardingLauncher(window: rootWindow)
                         let onBoardingKit = OnBoardingKitImpl()
                         let onBoardingConfig: (OnBoardingConfigBuilder) -> OnBoardingConfig = { builder in
                             let theme: (OnBoardingThemeBuilder) -> OnBoardingTheme = { themeBuilder in
@@ -23,9 +24,9 @@ struct SplashView: View {
                             }
                             builder.addTheme(themeBuilder: theme)
                             if let imageUrl = Bundle.main.url(forResource: "undraw_love", withExtension: "svg") {
-                                let page1 = OnBoardingPage(title: "Find and Book Doctors with Ease", textColor: 0, body: "Search for specialists near you, view their profiles, and book appointments in just a few taps. No waiting, no hassle.", bodyColor: 0, illustrationUri: "\(imageUrl)")
-                                let page2 = OnBoardingPage(title: "Order Medicines, Anytime", textColor: 0, body: "Shop for prescriptions and over-the-counter medicines from trusted pharmacies, and get them delivered to your doorstep.", bodyColor: 0, illustrationUri: "\(imageUrl)")
-                                let page3 = OnBoardingPage(title: "We're Here for You", textColor: 0, body: "Need help? Our support team is available around the clock to assist you with your healthcare needs.", bodyColor: 0, illustrationUri: "\(imageUrl)")
+                                let page1 = OnBoardingPage(title: "Find and Book Doctors with Ease", textColor: 0, body: "Search for specialists near you, view their profiles, and book appointments in just a few taps. No waiting, no hassle.", bodyColor: 0, illustrationImage: "\(imageUrl)")
+                                let page2 = OnBoardingPage(title: "Order Medicines, Anytime", textColor: 0, body: "Shop for prescriptions and over-the-counter medicines from trusted pharmacies, and get them delivered to your doorstep.", bodyColor: 0, illustrationImage: "\(imageUrl)")
+                                let page3 = OnBoardingPage(title: "We're Here for You", textColor: 0, body: "Need help? Our support team is available around the clock to assist you with your healthcare needs.", bodyColor: 0, illustrationImage: "\(imageUrl)")
                                 print("Image URL: \(imageUrl)")
                                 let allPages = [page1]
                                 let obBoardingPages = allPages
@@ -36,7 +37,7 @@ struct SplashView: View {
 
                             return builder.build()
                         }
-                        onBoardingKit.configure(context: rootWindow,configBuilder: onBoardingConfig)
+                        onBoardingKit.configure(onBoardingLauncher: onBoardingLauncher,configBuilder: onBoardingConfig)
                         onBoardingKit.start(
                             onComplete: onCompleteOnBoarding
                         )

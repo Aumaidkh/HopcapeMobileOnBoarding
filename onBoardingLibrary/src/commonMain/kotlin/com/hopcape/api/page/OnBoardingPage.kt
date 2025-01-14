@@ -14,14 +14,14 @@ package com.hopcape.api.page
  * @property textColor The color of the text on the page, represented as a `Long` value (usually ARGB format).
  * @property body The body text displayed in the main section of the page.
  * @property bodyColor The color of the body text, represented as a `Long` value (usually ARGB format).
- * @property illustrationUri The URI (Uniform Resource Identifier) of the illustration associated with the page.
+ * @property illustrationImage The URI (Uniform Resource Identifier) of the illustration associated with the page.
  *
  * @author Murtaza Khursheed
  */
-class OnBoardingPage(
+data class OnBoardingPage(
     val title: String,
     val textColor: Long,
     val body: String,
     val bodyColor: Long,
-    val illustrationUri: String
+    val illustrationImage: Any,
 )
