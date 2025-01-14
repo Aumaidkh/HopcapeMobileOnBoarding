@@ -11,6 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.hopcape.api.OnBoardingKit
 import com.hopcape.api.OnBoardingKitImpl
 import com.hopcape.api.OnBoardingPage
+import com.hopcape.api.launcher.AndroidOnBoardingLauncher
 
 private const val TAG = "MainActivity"
 class MainActivity : ComponentActivity() {
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
         val uri = Uri.parse("android.resource://${context.packageName}/drawable/test_image.jpg")
 
         setContent {
-            onBoardingKit.configure(this@MainActivity) {
+            onBoardingKit.configure(AndroidOnBoardingLauncher(this)) {
                 addPages(
                     OnBoardingPage(
                         title = "Find and Book Doctors with Ease",
