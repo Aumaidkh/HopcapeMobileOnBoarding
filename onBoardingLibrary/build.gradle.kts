@@ -8,7 +8,11 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.mokkery)
+    `maven-publish`
 }
+
+group = "com.hopcape.mobile.onboarding"
+version = "1.0.0"
 
 kotlin {
     androidTarget {
@@ -17,6 +21,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -82,5 +87,19 @@ android {
 dependencies {
     implementation(libs.androidx.lifecycle.common.jvm)
     debugImplementation(compose.uiTooling)
+}
+
+publishing {
+    repositories {
+        // Configure GitHub Packages
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/your-username/your-repository")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
+            }
+        }
+    }
 }
 
