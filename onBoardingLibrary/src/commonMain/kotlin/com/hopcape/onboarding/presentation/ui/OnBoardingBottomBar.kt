@@ -11,9 +11,9 @@ import androidx.compose.ui.unit.dp
 import com.hopcape.api.kit.OnBoardingKit
 import com.hopcape.api.config.background
 import com.hopcape.api.config.primaryColor
-import onboarding.onboardinglibrary.generated.resources.Res
-import onboarding.onboardinglibrary.generated.resources.arrow_left
-import onboarding.onboardinglibrary.generated.resources.arrow_right
+import com.hopcape.mobile.onboarding.onboardinglibrary.generated.resources.Res
+import com.hopcape.mobile.onboarding.onboardinglibrary.generated.resources.arrow_left
+import com.hopcape.mobile.onboarding.onboardinglibrary.generated.resources.arrow_right
 
 @Composable
 fun OnBoardingBottomBar(

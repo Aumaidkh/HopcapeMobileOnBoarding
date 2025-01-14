@@ -90,6 +90,17 @@ dependencies {
 }
 
 publishing {
+    publications {
+        create<MavenPublication>("release") {
+            from(components["kotlin"])
+            groupId = "com.hopcape.mobile"
+            artifactId = "onboarding-library"
+            version = "1.0.0"
+
+            // Include sources and javadoc if needed
+//            artifact(tasks["kotlinSourcesJar"])
+        }
+    }
     repositories {
         // Configure GitHub Packages
         maven {
