@@ -1,14 +1,13 @@
 package com.hopcape.api.config
 
-import com.hopcape.api.OnBoardingContext
 import com.hopcape.api.OnBoardingPage
 import com.hopcape.api.theme.DefaultLightTheme
 import com.hopcape.api.theme.OnBoardingTheme
 import com.hopcape.api.theme.OnBoardingThemeBuilder
 
-class OnBoardingConfigBuilder( context: OnBoardingContext ) {
+class OnBoardingConfigBuilder {
 
-    private var onBoardingConfig = OnBoardingConfig(emptyList(),DefaultLightTheme(),context)
+    private var onBoardingConfig = OnBoardingConfig(emptyList(),DefaultLightTheme())
 
     fun addPages(pages: OnBoardingPage) =
         apply {

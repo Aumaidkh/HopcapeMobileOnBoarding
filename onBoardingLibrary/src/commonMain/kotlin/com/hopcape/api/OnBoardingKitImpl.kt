@@ -10,7 +10,7 @@ class OnBoardingKitImpl: OnBoardingKit {
         context: OnBoardingContext,
         configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig
     ) {
-        val onBoardingConfigBuilder = OnBoardingConfigBuilder(context)
+        val onBoardingConfigBuilder = OnBoardingConfigBuilder()
         OnBoardingKit.configuration = onBoardingConfigBuilder.configBuilder()
     }
 
@@ -23,7 +23,7 @@ class OnBoardingKitImpl: OnBoardingKit {
             return
         }
 
-        OnBoardingKit.configuration?.context?.launchOnBoarding()
+        //OnBoardingKit.configuration?.context?.launchOnBoarding()
     }
 
     private fun isUserAlreadyOnBoarded(): Boolean {
