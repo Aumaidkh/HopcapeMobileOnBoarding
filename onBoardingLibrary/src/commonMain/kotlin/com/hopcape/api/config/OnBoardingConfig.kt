@@ -1,7 +1,7 @@
 package com.hopcape.api.config
 
 import androidx.compose.ui.graphics.Color
-import com.hopcape.api.OnBoardingPage
+import com.hopcape.api.page.OnBoardingPage
 import com.hopcape.api.theme.OnBoardingTheme
 
 /**

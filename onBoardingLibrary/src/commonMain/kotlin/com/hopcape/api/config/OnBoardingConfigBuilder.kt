@@ -1,6 +1,6 @@
 package com.hopcape.api.config
 
-import com.hopcape.api.OnBoardingPage
+import com.hopcape.api.page.OnBoardingPage
 import com.hopcape.api.theme.DefaultLightTheme
 import com.hopcape.api.theme.OnBoardingTheme
 import com.hopcape.api.theme.OnBoardingThemeBuilder

@@ -1,7 +1,7 @@
 package com.hopcape.onboarding
 
-import com.hopcape.api.OnBoardingKit
-import com.hopcape.api.OnBoardingKitImpl
+import com.hopcape.api.kit.OnBoardingKit
+import com.hopcape.api.kit.OnBoardingKitImpl
 import platform.UIKit.UIViewController
 
 fun MainViewController(): UIViewController {

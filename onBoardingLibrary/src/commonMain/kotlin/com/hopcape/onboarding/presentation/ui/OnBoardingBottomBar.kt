@@ -8,7 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.hopcape.api.OnBoardingKit
+import com.hopcape.api.kit.OnBoardingKit
 import com.hopcape.api.config.background
 import com.hopcape.api.config.primaryColor
 import onboarding.onboardinglibrary.generated.resources.Res
