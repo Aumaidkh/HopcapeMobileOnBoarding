@@ -37,6 +37,7 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.coil.compose.core)
             implementation(libs.coil.compose)
+            implementation(libs.coil.compose.svg)
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
@@ -45,7 +46,6 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.lifecycle.viewmodel.compose)
             implementation(libs.androidx.lifecycle.runtime.compose)
-            implementation("media.kamel:kamel-image-default:1.0.0")
         }
 
         commonTest.dependencies {

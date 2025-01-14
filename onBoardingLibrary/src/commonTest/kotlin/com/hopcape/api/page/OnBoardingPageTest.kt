@@ -21,7 +21,7 @@ class OnBoardingPageTest {
             textColor = textColor,
             body = body,
             bodyColor = bodyColor,
-            illustrationUri = illustrationUri
+            illustrationImage = illustrationUri
         )
 
         // Assert
@@ -29,7 +29,7 @@ class OnBoardingPageTest {
         assertEquals("Text color should be red", textColor, page.textColor)
         assertEquals("Body should match the provided body text", body, page.body)
         assertEquals("Body color should be green", bodyColor, page.bodyColor)
-        assertEquals("Illustration URI should match the provided URI", illustrationUri, page.illustrationUri)
+        assertEquals("Illustration URI should match the provided URI", illustrationUri, page.illustrationImage)
     }
 
     @Test
@@ -43,7 +43,7 @@ class OnBoardingPageTest {
             textColor = 0xFF0000,
             body = "Test Body",
             bodyColor = 0x00FF00,
-            illustrationUri = "https://example.com/test.png"
+            illustrationImage = "https://example.com/test.png"
         )
 
         // Assert
