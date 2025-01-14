@@ -8,9 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import com.hopcape.api.OnBoardingKit
-import com.hopcape.api.OnBoardingKitImpl
-import com.hopcape.api.OnBoardingPage
+import com.hopcape.api.kit.OnBoardingKit
+import com.hopcape.api.kit.OnBoardingKitImpl
+import com.hopcape.api.page.OnBoardingPage
 import com.hopcape.api.launcher.AndroidOnBoardingLauncher
 
 private const val TAG = "MainActivity"
