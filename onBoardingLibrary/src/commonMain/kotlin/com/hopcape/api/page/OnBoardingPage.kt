@@ -1,4 +1,4 @@
-package com.hopcape.mobile.api.page
+package com.hopcape.api.page
 
 /**
  * Represents a single page in the onboarding flow.

@@ -1,8 +1,8 @@
-package com.hopcape.mobile.onboarding.presentation.viewmodel
+package com.hopcape.onboarding.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.hopcape.mobile.api.kit.OnBoardingKit
+import com.hopcape.api.kit.OnBoardingKit
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onStart

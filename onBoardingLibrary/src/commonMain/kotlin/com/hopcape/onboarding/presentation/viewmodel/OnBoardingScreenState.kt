@@ -1,6 +1,6 @@
-package com.hopcape.mobile.onboarding.presentation.viewmodel
+package com.hopcape.onboarding.presentation.viewmodel
 
-import com.hopcape.mobile.api.page.OnBoardingPage
+import com.hopcape.api.page.OnBoardingPage
 
 /**
  * Represents the state of the onboarding screen.

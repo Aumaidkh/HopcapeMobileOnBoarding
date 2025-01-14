@@ -2,7 +2,6 @@ package com.hopcape.api.launcher
 
 import android.app.Activity
 import android.content.Intent
-import com.hopcape.mobile.api.launcher.OnBoardingLauncher
 import com.hopcape.presentation.OnBoardingHostActivity
 
 /**

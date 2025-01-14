@@ -1,10 +1,9 @@
 package com.hopcape.api.config
 
-import com.hopcape.mobile.api.page.OnBoardingPage
-import com.hopcape.mobile.api.theme.DefaultLightTheme
-import com.hopcape.mobile.api.theme.OnBoardingTheme
-import com.hopcape.mobile.api.config.OnBoardingConfigBuilder
-import com.hopcape.mobile.api.theme.OnBoardingThemeBuilder
+import com.hopcape.api.page.OnBoardingPage
+import com.hopcape.api.theme.DefaultLightTheme
+import com.hopcape.api.theme.OnBoardingTheme
+import com.hopcape.api.theme.OnBoardingThemeBuilder
 import dev.mokkery.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test

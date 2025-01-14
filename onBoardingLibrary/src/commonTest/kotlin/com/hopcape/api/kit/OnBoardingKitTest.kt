@@ -1,10 +1,8 @@
 package com.hopcape.api.kit
 
-import com.hopcape.mobile.api.config.OnBoardingConfig
-import com.hopcape.mobile.api.config.OnBoardingConfigBuilder
-import com.hopcape.mobile.api.launcher.OnBoardingLauncher
-import com.hopcape.mobile.api.kit.OnBoardingKit
-import com.hopcape.mobile.api.kit.OnBoardingKitImpl
+import com.hopcape.api.config.OnBoardingConfig
+import com.hopcape.api.config.OnBoardingConfigBuilder
+import com.hopcape.api.launcher.OnBoardingLauncher
 import dev.mokkery.answering.returns
 import dev.mokkery.answering.throws
 import dev.mokkery.every

@@ -7,7 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.Modifier
-import com.hopcape.mobile.onboarding.presentation.OnBoardingApp
+import com.hopcape.onboarding.presentation.OnBoardingApp
 
 class OnBoardingHostActivity : ComponentActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {

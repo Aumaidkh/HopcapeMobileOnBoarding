@@ -1,4 +1,4 @@
-package com.hopcape.mobile.onboarding.presentation.ui
+package com.hopcape.onboarding.presentation.ui
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.padding

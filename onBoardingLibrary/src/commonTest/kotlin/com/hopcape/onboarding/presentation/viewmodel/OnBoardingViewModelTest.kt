@@ -1,13 +1,10 @@
 package com.hopcape.onboarding.presentation.viewmodel
 
 import app.cash.turbine.test
-import com.hopcape.mobile.api.config.OnBoardingConfig
-import com.hopcape.mobile.api.kit.OnBoardingKit
-import com.hopcape.mobile.api.page.OnBoardingPage
-import com.hopcape.mobile.api.theme.DefaultLightTheme
-import com.hopcape.mobile.onboarding.presentation.viewmodel.OnBoardingAction
-import com.hopcape.mobile.onboarding.presentation.viewmodel.OnBoardingScreenState
-import com.hopcape.mobile.onboarding.presentation.viewmodel.OnBoardingViewModel
+import com.hopcape.api.config.OnBoardingConfig
+import com.hopcape.api.kit.OnBoardingKit
+import com.hopcape.api.page.OnBoardingPage
+import com.hopcape.api.theme.DefaultLightTheme
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest

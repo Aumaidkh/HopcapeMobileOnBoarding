@@ -91,7 +91,7 @@ dependencies {
 
 mavenPublishing {
     coordinates(
-        groupId = "io.github.aumaidkh",
+        groupId = "com.hopcape",
         artifactId = "onboarding-mobile",
         version = "1.0.0"
     )

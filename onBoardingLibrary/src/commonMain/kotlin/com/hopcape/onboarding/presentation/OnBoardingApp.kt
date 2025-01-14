@@ -1,4 +1,4 @@
-package com.hopcape.mobile.onboarding.presentation
+package com.hopcape.onboarding.presentation
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.hopcape.mobile.onboarding.presentation.viewmodel.OnBoardingViewModel
+import com.hopcape.onboarding.presentation.viewmodel.OnBoardingViewModel
 
 @Composable
 fun OnBoardingApp( modifier: Modifier = Modifier ) {

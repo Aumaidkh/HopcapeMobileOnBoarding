@@ -1,7 +1,6 @@
 package com.hopcape.api.theme
 
 import androidx.compose.ui.graphics.Color
-import com.hopcape.mobile.api.theme.OnBoardingThemeBuilder
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals

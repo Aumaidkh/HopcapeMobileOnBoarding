@@ -1,4 +1,4 @@
-package com.hopcape.mobile.onboarding.presentation
+package com.hopcape.onboarding.presentation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,10 +7,10 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
-import com.hopcape.mobile.api.page.OnBoardingPage
-import com.hopcape.mobile.onboarding.presentation.ui.OnBoardingBottomBar
-import com.hopcape.mobile.onboarding.presentation.ui.OnBoardingPage
-import com.hopcape.mobile.onboarding.presentation.viewmodel.OnBoardingAction
+import com.hopcape.api.page.OnBoardingPage
+import com.hopcape.onboarding.presentation.ui.OnBoardingBottomBar
+import com.hopcape.onboarding.presentation.ui.OnBoardingPage
+import com.hopcape.onboarding.presentation.viewmodel.OnBoardingAction
 
 @Composable
 fun OnBoardingScreen(

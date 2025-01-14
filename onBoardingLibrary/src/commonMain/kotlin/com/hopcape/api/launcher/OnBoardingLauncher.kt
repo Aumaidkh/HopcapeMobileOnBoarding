@@ -1,4 +1,4 @@
-package com.hopcape.mobile.api.launcher
+package com.hopcape.api.launcher
 
 /**
  * Interface for launching the onboarding flow.
