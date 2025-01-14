@@ -1,7 +1,6 @@
 package com.hopcape.onboarding.presentation.ui
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -11,17 +10,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.FilterQuality
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil3.ImageLoader
+import coil3.compose.AsyncImage
+import coil3.compose.LocalPlatformContext
+import coil3.request.ImageRequest
+import coil3.svg.SvgDecoder
 import com.hopcape.api.page.OnBoardingPage
-import io.kamel.core.Resource
-import io.kamel.image.KamelImage
-import io.kamel.image.asyncPainterResource
 
 @Composable
 fun OnBoardingPage(
@@ -33,31 +32,18 @@ fun OnBoardingPage(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-//        val context = LocalPlatformContext.current
-//        val imageLoader = ImageLoader.Builder(context)
-////            .components {
-////                add(SvgDecoder.Factory())
-////            }
-//            .build()
-//
-//        AsyncImage(
-//            model = ImageRequest.Builder(context)
-//                .data(page.illustrationUri)
-//                .build(),
-//            imageLoader = imageLoader,
-//            contentDescription = "SVG from Assets"
-//        )
-        val getPainterResource: @Composable (BoxWithConstraintsScope.() -> Resource<Painter>) = {
-            asyncPainterResource(
-                page.illustrationUri,
-                filterQuality = FilterQuality.High,
-            )
-        }
-        KamelImage(
+        val context = LocalPlatformContext.current
+        val imageLoader = ImageLoader.Builder(context)
+            .build()
+        AsyncImage(
             modifier = Modifier
                 .size(200.dp),
-            resource = getPainterResource,
-            contentDescription = ""
+            model = ImageRequest.Builder(context)
+                .data(page.illustrationImage)
+                .decoderFactory(SvgDecoder.Factory())
+                .build(),
+            imageLoader = imageLoader,
+            contentDescription = "SVG from Assets"
         )
         Text(
             modifier = Modifier

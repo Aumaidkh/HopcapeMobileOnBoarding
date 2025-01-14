@@ -79,7 +79,7 @@ class OnBoardingConfigBuilderTest {
         textColor = 100L,
         body = "Body ${(0..10).random()}",
         bodyColor = 100L,
-        illustrationUri = "file://assets/image.jpg"
+        illustrationImage = "file://assets/image.jpg"
     )
 
 }
