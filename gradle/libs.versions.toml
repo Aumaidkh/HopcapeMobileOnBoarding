@@ -21,6 +21,7 @@ lifecycleCommonJvm = "2.8.7"
 mokkery = "2.6.1"
 turbine = "1.2.0"
 viewModel = "2.8.2"
+vaniktech = "0.28.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -51,3 +52,4 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-mu
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 mokkery = { id = "dev.mokkery", version.ref = "mokkery" }
+vaniktechMavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "vaniktech" }

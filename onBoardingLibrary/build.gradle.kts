@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -9,10 +10,8 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.mokkery)
     `maven-publish`
+    alias(libs.plugins.vaniktechMavenPublish)
 }
-
-group = "com.hopcape.mobile.onboarding"
-version = "1.0.0"
 
 kotlin {
     androidTarget {
@@ -20,6 +19,7 @@ kotlin {
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
         }
+        publishLibraryVariants("release","debug")
     }
 
     listOf(
@@ -89,28 +89,44 @@ dependencies {
     debugImplementation(compose.uiTooling)
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            from(components["kotlin"])
-            groupId = "com.hopcape.mobile"
-            artifactId = "onboarding-library"
-            version = "1.0.0"
+mavenPublishing {
+    coordinates(
+        groupId = "com.hopcape",
+        artifactId = "onboarding-mobile",
+        version = "1.0.0"
+    )
 
-            // Include sources and javadoc if needed
-//            artifact(tasks["kotlinSourcesJar"])
-        }
-    }
-    repositories {
-        // Configure GitHub Packages
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Aumaidkh/HopcapeMobileOnBoarding")
-            credentials {
-                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN")
+    pom{
+        name.set("OnBoarding Library")
+        description.set("An OnBoarding Library which can be used in Android and iOS apps")
+        inceptionYear.set("2025")
+        url.set("https://github.com/Aumaidkh/HopcapeMobileOnBoarding")
+
+        licenses {
+            license{
+                name.set("MIT")
+                url.set("https://opensource.org/licenses/MIT")
             }
         }
+
+        developers {
+            developer{
+                id.set("Aumaidkh")
+                name.set("Murtaza Khursheed")
+                email.set("aumaidm.m.c@gmail.com")
+            }
+        }
+
+        scm {
+            url.set("https://github.com/Aumaidkh/HopcapeMobileOnBoarding")
+        }
+
     }
+
+    // Configure publishing to maven central
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    // Enable gpg signing for all publications
+    signAllPublications()
 }
 
