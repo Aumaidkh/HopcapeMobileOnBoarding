@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     OnBoardingPage(
                         title = "Find and Book Doctors with Ease",
                         body = "Search for specialists near you, view their profiles, and book appointments in just a few taps. No waiting, no hassle.",
-                        illustrationUri = uri.toString(),
+                        illustrationImage = com.hopcape.onboarding.R.drawable.undraw_love,
                         textColor = 0L,
                         bodyColor = 0L
                     )
@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
                     OnBoardingPage(
                         title = "Order Medicines, Anytime",
                         body = "Shop for prescriptions and over-the-counter medicines from trusted pharmacies, and get them delivered to your doorstep.",
-                        illustrationUri = uri.toString(),
+                        illustrationImage = com.hopcape.onboarding.R.drawable.undraw_love,
                         textColor = 0L,
                         bodyColor = 0L
                     )
@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
                     OnBoardingPage(
                         title = "We're Here for You",
                         body = "Need help? Our support team is available around the clock to assist you with your healthcare needs.",
-                        illustrationUri = uri.toString(),
+                        illustrationImage = com.hopcape.onboarding.R.drawable.undraw_love,
                         textColor = 0L,
                         bodyColor = 0L
                     )
