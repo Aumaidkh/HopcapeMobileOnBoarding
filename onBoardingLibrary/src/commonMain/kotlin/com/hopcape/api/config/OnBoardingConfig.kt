@@ -1,14 +1,12 @@
 package com.hopcape.api.config
 
 import androidx.compose.ui.graphics.Color
-import com.hopcape.api.OnBoardingContext
 import com.hopcape.api.OnBoardingPage
 import com.hopcape.api.theme.OnBoardingTheme
 
 data class OnBoardingConfig(
     val onBoardingPages: List<OnBoardingPage>,
-    val theme: OnBoardingTheme,
-    val context: OnBoardingContext
+    val theme: OnBoardingTheme
 )
 
 fun OnBoardingConfig?.primaryColor(): Color {
