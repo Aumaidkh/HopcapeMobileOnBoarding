@@ -8,6 +8,7 @@ import com.hopcape.api.theme.DefaultLightTheme
 import com.hopcape.di.OnBoardingModule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
+import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -109,5 +110,10 @@ class OnBoardingViewModelTest {
             awaitItem()
             assertEquals(2, awaitItem().pageNumber)
         }
+    }
+
+    @AfterTest
+    fun tearDown(){
+        OnBoardingKit.configuration = null
     }
 }
