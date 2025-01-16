@@ -17,10 +17,10 @@ jobs:
         uses: actions/Checkout@v4
 
       - name: Run Lint Check
-        run: ./gradlew lintDebug
+        run: ./gradlew lintDebug --stacktrace
         with:
           name: lint_report
-          path: onBoardingLibrary/build/reports/lint-results-debug
+          path: onBoardingLibrary/build/reports/lint-results-debug.html
 
   unit-test:
     needs: [lint]
@@ -30,13 +30,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Tests
-        run: ./gradlew test
+        run: ./gradlew test --stacktrace
 
       - name: Upload test Report
         uses: actions/upload-artifact@v4
+
         with:
           name: unit_test_report
-          path: onBoardingLibrary/build/reports/tests/testDebugUnitTest/
+          path: onBoardingLibrary/build/reports/tests/testDebugUnitTest
   publish:
     needs: [unit-test]
     runs-on: ubuntu-latest
