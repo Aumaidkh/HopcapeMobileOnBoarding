@@ -3,6 +3,8 @@ package com.hopcape.api.kit
 import com.hopcape.api.config.OnBoardingConfig
 import com.hopcape.api.config.OnBoardingConfigBuilder
 import com.hopcape.api.launcher.OnBoardingLauncher
+import com.hopcape.di.OnBoardingDependencyFactory
+import kotlinx.coroutines.runBlocking
 
 /**
  * Implementation of the [OnBoardingKit] interface that manages the onboarding flow.
@@ -16,10 +18,14 @@ import com.hopcape.api.launcher.OnBoardingLauncher
  *
  * @author Murtaza Khursheed
  */
-class OnBoardingKitImpl: OnBoardingKit {
+internal class OnBoardingKitImpl(
+    private val factory: OnBoardingDependencyFactory
+): OnBoardingKit {
 
     // The launcher used to start the onboarding flow
     private lateinit var onBoardingLauncher: OnBoardingLauncher
+
+    private val onBoardingPreferences by lazy { factory.createOnBoardingPreferences() }
 
     /**
      * Configures the onboarding flow.
@@ -76,6 +82,6 @@ class OnBoardingKitImpl: OnBoardingKit {
      * @return `true` if the user has already completed onboarding, otherwise `false`.
      */
     private fun isUserAlreadyOnBoarded(): Boolean {
-        return false
+        return runBlocking { onBoardingPreferences.isOnBoardingCompleted() }
     }
 }
