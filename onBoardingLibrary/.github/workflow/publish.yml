@@ -1,25 +1,26 @@
-name: Publish Library
+name: OnBoarding Library CI Pipelines
 
 on:
   push:
-    tags:
-      - 'v*' # Trigger on version tags
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  publish:
+  unit-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
+      - name: Run Tests
+        run: ./gradlew test
+
+      - name: Upload test Report
+        uses: actions/upload-artifact@v4
         with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Build and Publish
-        run: ./gradlew publish
-        env:
-          USERNAME: ${{ github.actor }}
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: unit_test_report
+          path: app/build/reports/tests/testDebugUnitTest/
