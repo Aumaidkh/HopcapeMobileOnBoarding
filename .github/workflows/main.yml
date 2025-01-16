@@ -56,9 +56,14 @@ jobs:
           echo "signing.secretKeyRingFile=$HOME/my_secring.gpg" >> gradle.properties
 
       - name: Write GPG Key to file
-        run: |
+        run:
+        # Ensure .gnupg directory exists
           mkdir -p $HOME/.gnupg
-          echo "${{ secrets.GPG_KEY }}" | tee $HOME/my_secring.gpg > /dev/null
+    
+        # Use a safe method to write the key content to a file
+         echo "${{ secrets.GPG_KEY }}" | base64 --decode > $HOME/my_secring.gpg
+    
+        # Set appropriate permissions for the keyring
           chmod 600 $HOME/my_secring.gpg
 
       - name: Publish to maven
