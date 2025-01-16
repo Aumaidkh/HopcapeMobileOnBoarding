@@ -10,7 +10,20 @@ on:
   workflow_dispatch:
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/Checkout@v4
+
+      - name: Run Lint Check
+        run: ./gradlew lintDebug
+        with:
+          name: lint_report
+          path: app/build/reports/lint-results-debug
+
   unit-test:
+    needs: [lint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
