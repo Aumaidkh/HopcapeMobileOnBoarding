@@ -1,5 +1,4 @@
 import com.vanniktech.maven.publish.SonatypeHost
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -93,7 +92,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.hopcape",
         artifactId = "onboarding-mobile",
-        version = "1.0.0"
+        version = "1.0.1"
     )
 
     pom{
@@ -129,4 +128,3 @@ mavenPublishing {
     // Enable gpg signing for all publications
     signAllPublications()
 }
-
