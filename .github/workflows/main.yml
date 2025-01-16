@@ -57,7 +57,9 @@ jobs:
 
       - name: Write GPG Key to file
         run: |
-          echo "${{ secrets.GPG_KEY }}" > $HOME/my_secring.gpg
+          mkdir -p $HOME/.gnupg
+          echo "${{ secrets.GPG_KEY }}" | tee $HOME/my_secring.gpg > /dev/null
+          chmod 600 $HOME/my_secring.gpg
 
       - name: Publish to maven
         run: ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
