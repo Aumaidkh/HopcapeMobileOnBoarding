@@ -2,7 +2,13 @@ package com.hopcape.api.kit
 
 import com.hopcape.api.config.OnBoardingConfig
 import com.hopcape.api.config.OnBoardingConfigBuilder
+import com.hopcape.api.kit.OnBoardingKit.Companion.configuration
 import com.hopcape.api.launcher.OnBoardingLauncher
+import com.hopcape.di.OnBoardingDependencyFactory
+import com.hopcape.di.OnBoardingModule
+import kotlin.experimental.ExperimentalObjCName
+import kotlin.jvm.JvmStatic
+import kotlin.native.ObjCName
 
 /**
  * Interface for managing the onboarding process in the application.
@@ -26,6 +32,14 @@ interface OnBoardingKit {
          * It can be customized and accessed across different instances of the onboarding kit.
          */
         var configuration: OnBoardingConfig? = null
+
+        @OptIn(ExperimentalObjCName::class)
+        @JvmStatic
+        @ObjCName("create")
+        fun create(factory: OnBoardingDependencyFactory): OnBoardingKit {
+            OnBoardingModule.setDependencyFactory(factory)
+            return OnBoardingKitImpl(factory)
+        }
     }
 
     /**

@@ -3,11 +3,13 @@ package com.hopcape.onboarding.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hopcape.api.kit.OnBoardingKit
+import com.hopcape.onboarding.data.local.OnBoardingPreferences
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 /**
  * ViewModel responsible for managing the state of the onboarding flow in the app.
@@ -18,7 +20,9 @@ import kotlinx.coroutines.flow.update
  *
  * @property state The current state of the onboarding flow, including the list of pages and the current page number.
  */
-class OnBoardingViewModel: ViewModel() {
+internal class OnBoardingViewModel(
+    private val onBoardingPreferences: OnBoardingPreferences
+): ViewModel() {
 
     /**
      * Mutable state flow holding the current state of the onboarding screen.
@@ -81,12 +85,15 @@ class OnBoardingViewModel: ViewModel() {
      * Navigates to the next page in the onboarding flow if it's not the last page.
      */
     private fun showNextPage() {
-        if (isLastPage()){
-            return
+        viewModelScope.launch {
+            onBoardingPreferences.setOnBoardingCompleted(true)
         }
-        updatePageNumber(
-            pageNumber = _state.value.pageNumber + 1
-        )
+//        if (isLastPage()){
+//            return
+//        }
+//        updatePageNumber(
+//            pageNumber = _state.value.pageNumber + 1
+//        )
     }
 
     /**

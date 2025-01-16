@@ -9,19 +9,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.hopcape.api.kit.OnBoardingKit
-import com.hopcape.api.kit.OnBoardingKitImpl
-import com.hopcape.api.page.OnBoardingPage
 import com.hopcape.api.launcher.AndroidOnBoardingLauncher
+import com.hopcape.api.page.OnBoardingPage
+import com.hopcape.di.AndroidOnBoardingDependencyFactory
 
 private const val TAG = "MainActivity"
 class MainActivity : ComponentActivity() {
+
+    private val onBoardingKit = OnBoardingKit.create(
+        factory = AndroidOnBoardingDependencyFactory(this)
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        val onBoardingKit: OnBoardingKit = OnBoardingKitImpl()
         val context = this
 
-    //    val uri = "android.resource://${context.packageName}/raw/undraw_love.svg"
+        //    val uri = "android.resource://${context.packageName}/raw/undraw_love.svg"
         val uri = Uri.parse("android.resource://${context.packageName}/drawable/test_image.jpg")
 
         setContent {
