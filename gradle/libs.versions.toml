@@ -13,6 +13,7 @@ androidx-material = "1.12.0"
 androidx-test-junit = "1.2.1"
 coil = "3.0.0"
 compose-multiplatform = "1.7.0"
+dokka = "2.0.0"
 junit = "4.13.2"
 kamel = "1.0.0"
 kotlin = "2.1.0"
@@ -53,3 +54,4 @@ composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "k
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 mokkery = { id = "dev.mokkery", version.ref = "mokkery" }
 vaniktechMavenPublish = { id = "com.vanniktech.maven.publish", version.ref = "vaniktech" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka"}

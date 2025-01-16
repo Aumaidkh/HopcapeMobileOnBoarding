@@ -41,6 +41,7 @@ jobs:
         with:
           name: unit_test_report
           path: onBoardingLibrary/build/reports/tests/testDebugUnitTest
+
   publish:
     needs: [unit-test]
     runs-on: ubuntu-latest
@@ -69,3 +70,22 @@ jobs:
 
       - name: Publish to maven
         run: ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
+
+  documentation:
+    needs: [publish]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Generating documentation
+        run: ./gradlew dokkaHtml
+
+      - name: Upload Documentation
+        uses: actions/upload-artifact@4
+        with:
+          name: onboarding-library-documentation
+          path: onBoardingLibrary/build/documentation/html
+
+
+

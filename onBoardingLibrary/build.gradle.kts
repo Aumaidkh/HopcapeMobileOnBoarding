@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.mokkery)
     `maven-publish`
     alias(libs.plugins.vaniktechMavenPublish)
+    alias(libs.plugins.dokka)
 }
 
 kotlin {
@@ -30,6 +31,10 @@ kotlin {
             baseName = "onBoardingLibrary"
             isStatic = true
         }
+    }
+
+    tasks.dokkaHtml {
+        outputDirectory.set(layout.buildDirectory.dir("documentation/html"))
     }
 
     sourceSets {
@@ -87,12 +92,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.common.jvm)
     debugImplementation(compose.uiTooling)
 }
-
 mavenPublishing {
     coordinates(
         groupId = "io.github.aumaidkh",
         artifactId = "onboarding-mobile",
-        version = "1.0.1"
+        version = "1.0.2"
     )
 
     pom{
