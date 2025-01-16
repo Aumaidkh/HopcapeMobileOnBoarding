@@ -82,7 +82,7 @@ jobs:
         run: ./gradlew dokkaHtml
 
       - name: Upload Documentation
-        uses: actions/upload-artifact@4
+        uses: actions/upload-artifact@v4
         with:
           name: onboarding-library-documentation
           path: onBoardingLibrary/build/documentation/html
