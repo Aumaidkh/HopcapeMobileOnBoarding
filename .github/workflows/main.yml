@@ -42,11 +42,11 @@ jobs:
 #          name: unit_test_report
 #          path: onBoardingLibrary/build/reports/tests/testDebugUnitTest
   publish:
-    ##needs: [unit-test]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+
       - name: Create gradle.properties dynamically
         run: |
           echo "mavenCentralUsername=${{ secrets.MAVEN_CENTRAL_USERNAME }}" >> gradle.properties
@@ -56,14 +56,14 @@ jobs:
           echo "signing.secretKeyRingFile=$HOME/my_secring.gpg" >> gradle.properties
 
       - name: Write GPG Key to file
-        run:
-        # Ensure .gnupg directory exists
+        run: |
+          # Ensure .gnupg directory exists
           mkdir -p $HOME/.gnupg
-    
-        # Use a safe method to write the key content to a file
-         echo "${{ secrets.GPG_KEY }}" | base64 --decode > $HOME/my_secring.gpg
-    
-        # Set appropriate permissions for the keyring
+          
+          # Use a safe method to write the key content to a file
+          echo "${{ secrets.GPG_KEY }}" | base64 --decode > $HOME/my_secring.gpg
+          
+          # Set appropriate permissions for the keyring
           chmod 600 $HOME/my_secring.gpg
 
       - name: Publish to maven
