@@ -20,7 +20,7 @@ jobs:
         run: ./gradlew lintDebug
         with:
           name: lint_report
-          path: app/build/reports/lint-results-debug
+          path: onBoardingLibrary/build/reports/lint-results-debug
 
   unit-test:
     needs: [lint]
@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: unit_test_report
-          path: app/build/reports/tests/testDebugUnitTest/
+          path: onBoardingLibrary/build/reports/tests/testDebugUnitTest/
   publish:
     needs: [unit-test]
     runs-on: ubuntu-latest
