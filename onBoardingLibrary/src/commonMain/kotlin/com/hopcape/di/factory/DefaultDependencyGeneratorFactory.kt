@@ -1,4 +1,4 @@
-package com.hopcape.di
+package com.hopcape.di.factory
 
 import com.hopcape.onboarding.data.local.OnBoardingPreferences
 import com.hopcape.onboarding.data.local.OnBoardingPreferencesImpl

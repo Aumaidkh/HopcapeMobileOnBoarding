@@ -5,7 +5,6 @@ import com.hopcape.api.config.OnBoardingConfig
 import com.hopcape.api.kit.OnBoardingKit
 import com.hopcape.api.page.OnBoardingPage
 import com.hopcape.api.theme.DefaultLightTheme
-import com.hopcape.di.OnBoardingModule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import kotlin.test.AfterTest

@@ -1,4 +1,4 @@
-package com.hopcape.di
+package com.hopcape.di.container
 
 import kotlin.reflect.KClass
 

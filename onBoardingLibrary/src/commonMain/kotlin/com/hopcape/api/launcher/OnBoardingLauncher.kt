@@ -20,7 +20,7 @@ package com.hopcape.api.launcher
  *
  * @author Murtaza Khursheed
  */
-fun interface OnBoardingLauncher {
+internal fun interface OnBoardingLauncher {
     /**
      * Launches the onboarding flow.
      *

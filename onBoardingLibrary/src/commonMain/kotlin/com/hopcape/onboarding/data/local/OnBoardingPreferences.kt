@@ -13,7 +13,7 @@ package com.hopcape.onboarding.data.local
  * @property isOnBoardingCompleted A Boolean indicating whether the onboarding process has been completed.
  * @property setOnBoardingCompleted A method that sets the onboarding completion status to the specified [completed] value.
  */
-interface OnBoardingPreferences {
+internal interface OnBoardingPreferences {
 
     /**
      * Checks whether the onboarding process has been completed.

@@ -3,10 +3,9 @@ package com.hopcape.api.kit
 import com.hopcape.api.config.OnBoardingConfig
 import com.hopcape.api.config.OnBoardingConfigBuilder
 import com.hopcape.api.kit.OnBoardingKit.Companion.configuration
-import com.hopcape.api.launcher.OnBoardingLauncher
-import com.hopcape.di.DefaultDependencyGeneratorFactory
-import com.hopcape.di.OnBoardingDependencyFactory
-import com.hopcape.di.OnBoardingModule
+import com.hopcape.di.factory.DefaultDependencyGeneratorFactory
+import com.hopcape.di.factory.OnBoardingDependencyFactory
+import com.hopcape.di.container.OnBoardingModule
 import kotlin.experimental.ExperimentalObjCName
 import kotlin.jvm.JvmStatic
 import kotlin.native.ObjCName
@@ -66,20 +65,29 @@ interface OnBoardingKit {
     }
 
     /**
-     * Configures the onboarding flow.
+     * Configures the onboarding flow with customizable settings.
      *
-     * This method sets up the configuration and launcher for the onboarding process. It allows customization
-     * of the onboarding experience by using the [OnBoardingConfigBuilder] DSL. This method ensures that the
-     * onboarding process is set up with the necessary configurations before it is started.
+     * This method initializes the onboarding configuration using the [OnBoardingConfigBuilder] DSL.
+     * It allows developers to define the onboarding experience by specifying pages, themes, storage,
+     * and other settings before the onboarding process starts.
      *
-     * @param onBoardingLauncher The [OnBoardingLauncher] responsible for triggering the onboarding flow.
-     * @param configBuilder A lambda function that builds the [OnBoardingConfig] using the [OnBoardingConfigBuilder] DSL.
-     *                      The configuration defines the settings for the onboarding experience.
+     * ## Usage Example:
+     * ```
+     * onBoardingManager.configure {
+     *     addOnBoardingLauncher(myLauncher)
+     *     addPages(listOf(page1, page2))
+     *     addTheme { myCustomTheme }
+     * }
+     * ```
+     *
+     * @param configBuilder A lambda function that configures the [OnBoardingConfig] using the [OnBoardingConfigBuilder] DSL.
+     *                      This function allows defining various aspects of the onboarding experience, such as pages, themes,
+     *                      and storage mechanisms.
      */
     fun configure(
-        onBoardingLauncher: OnBoardingLauncher,
         configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig
     )
+
 
     /**
      * Starts the onboarding flow.

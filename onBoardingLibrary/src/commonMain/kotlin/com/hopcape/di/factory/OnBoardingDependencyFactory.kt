@@ -1,8 +1,7 @@
-package com.hopcape.di
+package com.hopcape.di.factory
 
 import com.hopcape.onboarding.data.local.OnBoardingPreferences
 import com.hopcape.onboarding.data.local.datasource.BooleanKeyValueStorage
-import com.hopcape.onboarding.data.local.datasource.KeyValueStorage
 
 /**
  * Factory interface for creating dependencies related to onboarding data storage.
