@@ -26,7 +26,6 @@ jobs:
           path: onBoardingLibrary/build/reports/lint-results-debug.html
 
   unit-test:
-    needs: [lint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -43,6 +42,7 @@ jobs:
           path: onBoardingLibrary/build/reports/tests/testDebugUnitTest
 
   publish:
+    if: github.event_name == 'push'
     needs: [unit-test]
     runs-on: ubuntu-latest
     steps:
@@ -72,7 +72,6 @@ jobs:
         run: ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
 
   documentation:
-    needs: [publish]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
