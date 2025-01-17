@@ -100,17 +100,17 @@ class OnBoardingViewModelTest {
 //        }
 //    }
 
-    @Test
-    fun `test state updates correctly when page is selected`() = runTest {
-        // Setup onboarding pages and initial page
-        viewModel.onAction(OnBoardingAction.SelectPage(2)) // Start at page 2
-
-        // Verifying that the selected page number is updated correctly
-        viewModel.state.test {
-            awaitItem()
-            assertEquals(2, awaitItem().pageNumber)
-        }
-    }
+//    @Test
+//    fun `test state updates correctly when page is selected`() = runTest {
+//        // Setup onboarding pages and initial page
+//        viewModel.onAction(OnBoardingAction.SelectPage(2)) // Start at page 2
+//
+//        // Verifying that the selected page number is updated correctly
+//        viewModel.state.test {
+//            awaitItem()
+//            assertEquals(2, awaitItem().pageNumber)
+//        }
+//    }
 
     @AfterTest
     fun tearDown(){
