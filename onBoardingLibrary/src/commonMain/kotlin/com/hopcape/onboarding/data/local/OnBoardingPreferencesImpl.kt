@@ -1,31 +1,37 @@
 package com.hopcape.onboarding.data.local
 
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.flow.map
+import com.hopcape.onboarding.data.local.datasource.BooleanKeyValueStorage
 
 /**
  * Implementation of [OnBoardingPreferences] that interacts with [DataStore] to
  * store and retrieve the onboarding completion status.
  *
- * This class uses [DataStore] to persist the onboarding completion status, allowing
- * retrieval of whether the onboarding process has been completed or not.
+ * This class provides functionality to check if the onboarding process has been completed and to
+ * update the completion status. It uses [DataStore] for persistent storage of the onboarding completion state.
  *
- * @property onBoardingStorageGenerator A generator that provides the [DataStore] instance.
+ * The completion status is stored under a specific key, and methods are provided to read and write this value.
  *
+ * ## Usage
+ * This class should be used to track the completion status of the onboarding process in the application.
+ * It provides methods to check if the onboarding has been completed and to set the completion status.
+ *
+ * ### Example:
+ * ```kotlin
+ * val onBoardingPreferences: OnBoardingPreferences = OnBoardingPreferencesImpl(storage)
+ * val isCompleted = onBoardingPreferences.isOnBoardingCompleted()
+ * onBoardingPreferences.setOnBoardingCompleted(true)
+ * ```
+ *
+ * @property storage The [BooleanKeyValueStorage] used for storing and retrieving the onboarding completion status.
+ *
+ * @see OnBoardingPreferences
+ * @see BooleanKeyValueStorage
  * @author Murtaza Khursheed
  */
 internal class OnBoardingPreferencesImpl(
-    private val onBoardingStorageGenerator: OnBoardingStorageGenerator
-): OnBoardingPreferences {
-
-    private val storage by lazy {
-        onBoardingStorageGenerator.dataStore
-    }
+    private val storage: BooleanKeyValueStorage
+) : OnBoardingPreferences {
 
     /**
      * Checks whether the onboarding process has been completed.
@@ -36,8 +42,8 @@ internal class OnBoardingPreferencesImpl(
      * @return A boolean indicating the onboarding completion status.
      *         Returns `true` if the onboarding process has been completed, `false` otherwise.
      */
-    override suspend fun isOnBoardingCompleted(): Boolean {
-        return storage.getBooleanAsFlow(isOnBoardingCompleted).firstOrNull() ?: false
+    override fun isOnBoardingCompleted(): Boolean {
+        return storage.get(ONBOARDING_COMPLETED_KEY)
     }
 
     /**
@@ -50,38 +56,11 @@ internal class OnBoardingPreferencesImpl(
      *                  `true` marks the onboarding as completed, `false` marks it as incomplete.
      */
     override suspend fun setOnBoardingCompleted(completed: Boolean) {
-        storage.saveBoolean(isOnBoardingCompleted, completed)
-    }
-
-    /**
-     * Retrieves the value of a boolean preference as a flow.
-     *
-     * This is a helper method that returns a [Flow] containing the boolean value
-     * stored under the given key. If no value is found, it will return `null`.
-     *
-     * @param key The [Preferences.Key] used to retrieve the stored value.
-     * @return A flow that emits the boolean value stored in [DataStore] for the given key.
-     */
-    private fun DataStore<Preferences>.getBooleanAsFlow(key: Preferences.Key<Boolean>): Flow<Boolean?> {
-        return this.data.map { preferences -> preferences[key] }
-    }
-
-    /**
-     * Saves a boolean value in the [DataStore].
-     *
-     * This is a helper method that saves the given boolean value under the specified key.
-     *
-     * @param key The [Preferences.Key] under which the value will be stored.
-     * @param value The boolean value to be stored.
-     */
-    private suspend fun DataStore<Preferences>.saveBoolean(key: Preferences.Key<Boolean>, value: Boolean) {
-        this.edit { preferences ->
-            preferences[key] = value
-        }
+        storage.set(ONBOARDING_COMPLETED_KEY, completed)
     }
 
     companion object {
-        // The key used to store the onboarding completion status in the DataStore.
-        private val isOnBoardingCompleted = booleanPreferencesKey("isOnBoardingCompleted")
+        // The key used to store the onboarding completion status in the [DataStore].
+        private const val ONBOARDING_COMPLETED_KEY = "onboardingCompleted"
     }
 }

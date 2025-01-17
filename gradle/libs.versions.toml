@@ -25,7 +25,10 @@ koinComposeViewModel = "1.2.0-Beta4"
 kotlin = "2.1.0"
 kotlinxCoroutinesTest = "1.10.1"
 lifecycleCommonJvm = "2.8.7"
+
 mokkery = "2.6.1"
+multiplatformSettings = "1.2.0"
+
 turbine = "1.2.0"
 viewModel = "2.8.2"
 vaniktech = "0.28.0"
@@ -61,6 +64,12 @@ koin-compose-viewmodel = { group = "io.insert-koin", name = "koin-compose-viewmo
 
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 lifecycle-viewmodel-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "viewModel"}
+
+## Similar to Shared Prefs
+multiplatform-settings-no-arg = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "multiplatformSettings"}
+multiplatform-settings-coroutines = { module = "com.russhwolf:multiplatform-settings-coroutines", version.ref = "multiplatformSettings"}
+
+## Turbine
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]

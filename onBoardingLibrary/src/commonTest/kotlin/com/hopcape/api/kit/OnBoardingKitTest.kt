@@ -3,7 +3,7 @@ package com.hopcape.api.kit
 import com.hopcape.api.config.OnBoardingConfig
 import com.hopcape.api.config.OnBoardingConfigBuilder
 import com.hopcape.api.launcher.OnBoardingLauncher
-import com.hopcape.onboarding.presentation.viewmodel.FakeOnBoardingDependencyFactory
+import com.hopcape.di.FakeOnBoardingDependencyFactory
 import dev.mokkery.answering.returns
 import dev.mokkery.answering.throws
 import dev.mokkery.every

@@ -16,9 +16,10 @@ class FakeOnBoardingPreferences : OnBoardingPreferences {
     /**
      * Checks whether the onboarding process has been completed.
      *
-     * @return `true` if the onboarding process has been completed, `false` otherwise.
+     * @return Boolean value indicating the onboarding completion status.
+     *         Returns `true` if the onboarding process has been completed, `false` otherwise.
      */
-    override suspend fun isOnBoardingCompleted(): Boolean {
+    override fun isOnBoardingCompleted(): Boolean {
         return result
     }
 

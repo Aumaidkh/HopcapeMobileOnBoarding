@@ -16,8 +16,7 @@ struct SplashView: View {
                 .onAppear{
                     if let rootWindow = UIApplication.shared.windows.first {
                         let onBoardingLauncher = IOSOnBoardingLauncher(window: rootWindow)
-                        let factory = IOSOnBoardingDependencyFactory()
-                        let onBoardingKit: OnBoardingKit = OnBoardingKitCompanion().create(factory: factory)
+                        let onBoardingKit: OnBoardingKit = OnBoardingKitCompanion().create()
                         let onBoardingConfig: (OnBoardingConfigBuilder) -> OnBoardingConfig = { builder in
                             let theme: (OnBoardingThemeBuilder) -> OnBoardingTheme = { themeBuilder in
                                 themeBuilder.setPrimaryColorArgb(color: 0xFF2893E1)

@@ -11,14 +11,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.hopcape.api.kit.OnBoardingKit
 import com.hopcape.api.launcher.AndroidOnBoardingLauncher
 import com.hopcape.api.page.OnBoardingPage
-import com.hopcape.di.AndroidOnBoardingDependencyFactory
 
 private const val TAG = "MainActivity"
 class MainActivity : ComponentActivity() {
 
-    private val onBoardingKit = OnBoardingKit.create(
-        factory = AndroidOnBoardingDependencyFactory(this)
-    )
+    private val onBoardingKit = OnBoardingKit.create()
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
