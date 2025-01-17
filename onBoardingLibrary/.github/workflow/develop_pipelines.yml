@@ -1,0 +1,25 @@
+name: OnBoarding Mobile Develop Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+
+  workflow_dispatch:
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Tests
+        run: ./gradlew test --stacktrace
+
+      - name: Upload test Report
+        uses: actions/upload-artifact@v4
+
+        with:
+          name: unit_test_report
+          path: onBoardingLibrary/build/reports/tests/testDebugUnitTest
