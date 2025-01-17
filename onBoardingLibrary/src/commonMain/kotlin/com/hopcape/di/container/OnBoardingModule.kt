@@ -62,7 +62,7 @@ internal object OnBoardingModule : OnBoardingDiContainer {
      *        This factory provides the actual implementations of the dependencies needed for
      *        onboarding, such as storage preferences and view models.
      */
-    fun setDependencyFactory(onBoardingDependencyFactory: OnBoardingDependencyFactory) {
+    internal fun setDependencyFactory(onBoardingDependencyFactory: OnBoardingDependencyFactory) {
         with(onBoardingDependencyFactory) {
             dependencyGraph = mutableMapOf()
             dependencyGraph[OnBoardingPreferences::class] = createOnBoardingPreferences()

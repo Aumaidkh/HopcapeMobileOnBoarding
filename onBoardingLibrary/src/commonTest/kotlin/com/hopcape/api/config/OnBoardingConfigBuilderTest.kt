@@ -1,9 +1,11 @@
 package com.hopcape.api.config
 
+import com.hopcape.api.launcher.OnBoardingLauncher
 import com.hopcape.api.page.OnBoardingPage
 import com.hopcape.api.theme.DefaultLightTheme
 import com.hopcape.api.theme.OnBoardingTheme
 import com.hopcape.api.theme.OnBoardingThemeBuilder
+import com.hopcape.onboarding.data.local.datasource.BooleanKeyValueStorage
 import dev.mokkery.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -51,6 +53,34 @@ class OnBoardingConfigBuilderTest {
             assertEquals(fakePages[it], config.onBoardingPages[it])
 
         }
+    }
+
+    @Test
+    fun `addOnBoardingLauncher should set the launcher in the config`() {
+        // Arrange
+        val mockLauncher = mock<OnBoardingLauncher>()
+
+        // Act
+        val config = onBoardingConfigBuilder
+            .addOnBoardingLauncher(mockLauncher)
+            .build()
+
+        // Assert
+        assertEquals(mockLauncher, config.onBoardingLauncher)
+    }
+
+    @Test
+    fun `addKeyValueStorage should set the storage mechanism in the config`() {
+        // Arrange
+        val mockStorage = mock<BooleanKeyValueStorage>()
+
+        // Act
+        val config = onBoardingConfigBuilder
+            .addKeyValueStorage(mockStorage)
+            .build()
+
+        // Assert
+        assertEquals(mockStorage, config.keyValueStorage)
     }
 
     @Test
