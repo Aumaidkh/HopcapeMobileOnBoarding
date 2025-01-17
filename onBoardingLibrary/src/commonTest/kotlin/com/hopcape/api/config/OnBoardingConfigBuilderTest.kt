@@ -23,32 +23,34 @@ class OnBoardingConfigBuilderTest {
     @Test
     fun `addPages should add an onboarding page to the config`() {
         // Arrange
-        val mockPage = fakeOnBoardingPage()
+        val fakePages = fakeOnBoardingPages()
 
         // Act
-        val config = onBoardingConfigBuilder.addPages(mockPage).build()
+        val config = onBoardingConfigBuilder.addPages(fakePages).build()
 
         // Assert
-        assertEquals(1, config.onBoardingPages.size)
-        assertEquals(mockPage, config.onBoardingPages[0])
+        assertEquals(fakePages.size, config.onBoardingPages.size)
+        repeat(fakePages.size){
+            assertEquals(fakePages[it], config.onBoardingPages[it])
+        }
     }
 
     @Test
     fun `addPages should add multiple onboarding pages to the config`() {
         // Arrange
-        val mockPage1 = fakeOnBoardingPage()
-        val mockPage2 =  fakeOnBoardingPage()
+        val fakePages = fakeOnBoardingPages()
 
         // Act
         val config = onBoardingConfigBuilder
-            .addPages(mockPage1)
-            .addPages(mockPage2)
+            .addPages(fakePages)
             .build()
 
         // Assert
-        assertEquals(2, config.onBoardingPages.size)
-        assertEquals(mockPage1, config.onBoardingPages[0])
-        assertEquals(mockPage2, config.onBoardingPages[1])
+        assertEquals(fakePages.size, config.onBoardingPages.size)
+        repeat(fakePages.size){
+            assertEquals(fakePages[it], config.onBoardingPages[it])
+
+        }
     }
 
     @Test
@@ -80,6 +82,12 @@ class OnBoardingConfigBuilderTest {
         body = "Body ${(0..10).random()}",
         bodyColor = 100L,
         illustrationImage = "file://assets/image.jpg"
+    )
+
+    private fun fakeOnBoardingPages() = listOf(
+        fakeOnBoardingPage(),
+        fakeOnBoardingPage(),
+        fakeOnBoardingPage()
     )
 
 }

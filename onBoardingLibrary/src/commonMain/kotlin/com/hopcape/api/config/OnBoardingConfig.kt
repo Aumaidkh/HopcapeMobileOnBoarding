@@ -22,7 +22,7 @@ import com.hopcape.onboarding.data.local.datasource.BooleanKeyValueStorage
 data class OnBoardingConfig(
     val onBoardingPages: List<OnBoardingPage>,
     val theme: OnBoardingTheme,
-    val keyValueStorage: BooleanKeyValueStorage = OnBoardingModule.get(BooleanKeyValueStorage::class),
+    val keyValueStorage: BooleanKeyValueStorage? = runCatching<BooleanKeyValueStorage?> { OnBoardingModule.get(BooleanKeyValueStorage::class) }.getOrNull(),
     val onBoardingLauncher: OnBoardingLauncher? = null
 )
 
