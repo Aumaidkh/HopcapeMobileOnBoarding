@@ -3,8 +3,7 @@ package com.hopcape.api.kit
 import com.hopcape.api.config.OnBoardingConfig
 import com.hopcape.api.config.OnBoardingConfigBuilder
 import com.hopcape.api.launcher.OnBoardingLauncher
-import com.hopcape.di.OnBoardingDependencyFactory
-import kotlinx.coroutines.runBlocking
+import com.hopcape.di.factory.OnBoardingDependencyFactory
 
 /**
  * Implementation of the [OnBoardingKit] interface that manages the onboarding flow.
@@ -28,24 +27,28 @@ internal class OnBoardingKitImpl(
     private val onBoardingPreferences by lazy { factory.createOnBoardingPreferences() }
 
     /**
-     * Configures the onboarding flow.
+     * Configures the onboarding flow with customizable settings.
      *
-     * This function allows configuring the onboarding process by providing the necessary launcher and
-     * configuration details. The [OnBoardingConfigBuilder] is used to build the configuration, which can
-     * be customized using the provided DSL.
+     * This method initializes the onboarding configuration using the [OnBoardingConfigBuilder] DSL.
+     * It allows developers to define the onboarding experience by specifying pages, themes, storage,
+     * and other settings before the onboarding process starts.
      *
-     * The resulting configuration is stored in the [OnBoardingKit.configuration] property.
+     * ## Usage Example:
+     * ```
+     * onBoardingManager.configure {
+     *     addOnBoardingLauncher(myLauncher)
+     *     addPages(listOf(page1, page2))
+     *     addTheme { myCustomTheme }
+     * }
+     * ```
      *
-     * @param onBoardingLauncher The launcher used to start the onboarding flow.
-     * @param configBuilder A lambda function that builds the [OnBoardingConfig] using the [OnBoardingConfigBuilder].
+     * @param configBuilder A lambda function that configures the [OnBoardingConfig] using the [OnBoardingConfigBuilder] DSL.
+     *                      This function allows defining various aspects of the onboarding experience, such as pages, themes,
+     *                      and storage mechanisms.
      */
-    override fun configure(
-        onBoardingLauncher: OnBoardingLauncher,
-        configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig
-    ) {
+    override fun configure(configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig) {
         val onBoardingConfigBuilder = OnBoardingConfigBuilder()
         OnBoardingKit.configuration = onBoardingConfigBuilder.configBuilder()
-        this.onBoardingLauncher = onBoardingLauncher
     }
 
     /**
@@ -63,14 +66,11 @@ internal class OnBoardingKitImpl(
         if (OnBoardingKit.configuration == null){
             throw IllegalStateException("No Onboarding config found, did you forget to call configure")
         }
-        if (!::onBoardingLauncher.isInitialized){
-            throw IllegalStateException("No OnBoarding launcher passed while configuration")
-        }
         if (isUserAlreadyOnBoarded()){
             onComplete()
             return
         }
-        onBoardingLauncher.launchOnBoarding()
+        OnBoardingKit.configuration?.onBoardingLauncher?.launchOnBoarding()
     }
 
     /**

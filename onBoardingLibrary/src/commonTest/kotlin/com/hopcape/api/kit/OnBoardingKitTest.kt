@@ -29,11 +29,11 @@ class OnBoardingKitImplTest {
     fun `test configure sets the configuration correctly`() {
         // Arrange
         val configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig = {
-            OnBoardingConfig(onBoardingPages = emptyList(), theme = mock())
+            OnBoardingConfig(onBoardingPages = emptyList(), theme = mock(), onBoardingLauncher = mockLauncher)
         }
 
         // Act
-        onBoardingKit.configure(mockLauncher, configBuilder)
+        onBoardingKit.configure(configBuilder)
 
         // Assert
         assertNotNull(OnBoardingKit.configuration)
@@ -44,9 +44,9 @@ class OnBoardingKitImplTest {
         // Arrange
         val onComplete: () -> Unit = mock()
         val configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig = {
-            OnBoardingConfig(onBoardingPages = emptyList(), theme = mock())
+            OnBoardingConfig(onBoardingPages = emptyList(), theme = mock(),onBoardingLauncher = mockLauncher)
         }
-        onBoardingKit.configure(mockLauncher, configBuilder)
+        onBoardingKit.configure(configBuilder)
         every { mockLauncher.launchOnBoarding() } returns Unit
 
         // Act
@@ -61,11 +61,11 @@ class OnBoardingKitImplTest {
         // Arrange
         val onComplete: () -> Unit = mock()
         val configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig = {
-            OnBoardingConfig(onBoardingPages = emptyList(), theme = mock())
+            OnBoardingConfig(onBoardingPages = emptyList(), theme = mock(), onBoardingLauncher = mockLauncher)
         }
         // Simulate the user already being onboarded
         every { mockLauncher.launchOnBoarding() } returns Unit
-        onBoardingKit.configure(mockLauncher, configBuilder)
+        onBoardingKit.configure(configBuilder)
 
         // Act
         onBoardingKit.start(onComplete)
@@ -90,9 +90,9 @@ class OnBoardingKitImplTest {
         // Arrange
         val onComplete: () -> Unit = mock()
         val configBuilder: OnBoardingConfigBuilder.() -> OnBoardingConfig = {
-            OnBoardingConfig(onBoardingPages = emptyList(), theme = mock())
+            OnBoardingConfig(onBoardingPages = emptyList(), theme = mock(), onBoardingLauncher = mockLauncher)
         }
-        onBoardingKit.configure(mockLauncher, configBuilder)
+        onBoardingKit.configure(configBuilder)
 
         // Simulate the launcher being null or uninitialized
         every { mockLauncher.launchOnBoarding() } throws IllegalStateException()

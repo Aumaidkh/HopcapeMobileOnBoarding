@@ -28,16 +28,15 @@ struct SplashView: View {
                                 let page2 = OnBoardingPage(title: "Order Medicines, Anytime", textColor: 0, body: "Shop for prescriptions and over-the-counter medicines from trusted pharmacies, and get them delivered to your doorstep.", bodyColor: 0, illustrationImage: "\(imageUrl)")
                                 let page3 = OnBoardingPage(title: "We're Here for You", textColor: 0, body: "Need help? Our support team is available around the clock to assist you with your healthcare needs.", bodyColor: 0, illustrationImage: "\(imageUrl)")
                                 print("Image URL: \(imageUrl)")
-                                let allPages = [page1]
+                                let allPages = [page1,page2,page3]
                                 let obBoardingPages = allPages
-                                builder.addPages(pages: page1)
-                                builder.addPages(pages: page2)
-                                builder.addPages(pages: page3)
+                                builder.addPages(pages: allPages)
+                                builder.addOnBoardingLauncher(launcher: onBoardingLauncher)
                             }
 
                             return builder.build()
                         }
-                        onBoardingKit.configure(onBoardingLauncher: onBoardingLauncher,configBuilder: onBoardingConfig)
+                        onBoardingKit.configure(configBuilder: onBoardingConfig)
                         onBoardingKit.start(
                             onComplete: onCompleteOnBoarding
                         )

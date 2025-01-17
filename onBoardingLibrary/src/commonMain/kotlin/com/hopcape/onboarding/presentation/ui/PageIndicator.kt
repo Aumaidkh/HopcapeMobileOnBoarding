@@ -22,7 +22,7 @@ import com.hopcape.api.config.secondaryColor
  * @param current Current dot which is active
  * */
 @Composable
-fun PageIndicator(
+internal fun PageIndicator(
     modifier: Modifier = Modifier,
     totalDots: Int = 0,
     current: Int = 0

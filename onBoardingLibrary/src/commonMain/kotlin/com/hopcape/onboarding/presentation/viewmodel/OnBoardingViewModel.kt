@@ -73,11 +73,13 @@ internal class OnBoardingViewModel(
      * Navigates to the previous page in the onboarding flow if it's not the first page.
      */
     private fun showPreviousPage() {
-        if (isFirstPage()){
+        val requestedPageIndex =
+            _state.value.pageNumber - 1
+        if (isFirstPage(requestedPageIndex)){
             return
         }
         updatePageNumber(
-            pageNumber = _state.value.pageNumber - 1
+            pageNumber = requestedPageIndex
         )
     }
 
@@ -85,15 +87,17 @@ internal class OnBoardingViewModel(
      * Navigates to the next page in the onboarding flow if it's not the last page.
      */
     private fun showNextPage() {
-        viewModelScope.launch {
-            onBoardingPreferences.setOnBoardingCompleted(true)
+        val requestedPageIndexedValue =
+            _state.value.pageNumber + 1
+        if (isLastPage(requestedPageIndexedValue)){
+            viewModelScope.launch {
+                onBoardingPreferences.setOnBoardingCompleted(true)
+            }
+            return
         }
-//        if (isLastPage()){
-//            return
-//        }
-//        updatePageNumber(
-//            pageNumber = _state.value.pageNumber + 1
-//        )
+        updatePageNumber(
+            pageNumber = requestedPageIndexedValue
+        )
     }
 
     /**
@@ -101,16 +105,16 @@ internal class OnBoardingViewModel(
      *
      * @return `true` if the current page is the last page; otherwise, `false`.
      */
-    private fun isLastPage() =
-        _state.value.pageNumber > _state.value.pages.size - 1
+    private fun isLastPage(index: Int) =
+        index >= _state.value.pages.size
 
     /**
      * Checks if the current page is the first page in the onboarding flow.
      *
      * @return `true` if the current page is the first page; otherwise, `false`.
      */
-    private fun isFirstPage() =
-        _state.value.pageNumber == 0
+    private fun isFirstPage(index: Int) =
+        index < 0
 
     /**
      * Updates the current page number in the onboarding flow state.

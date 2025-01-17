@@ -1,5 +1,6 @@
 package com.hopcape.di
 
+import com.hopcape.di.factory.OnBoardingDependencyFactory
 import com.hopcape.onboarding.data.local.OnBoardingPreferences
 import com.hopcape.onboarding.data.local.datasource.BooleanKeyValueStorage
 import com.hopcape.onboarding.presentation.viewmodel.FakeKeyValueStorage

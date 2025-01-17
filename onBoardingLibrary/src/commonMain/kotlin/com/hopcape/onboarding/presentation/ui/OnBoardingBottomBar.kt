@@ -15,8 +15,20 @@ import onboarding.onboardinglibrary.generated.resources.Res
 import onboarding.onboardinglibrary.generated.resources.arrow_left
 import onboarding.onboardinglibrary.generated.resources.arrow_right
 
+/**
+ * A bottom navigation bar for the onboarding flow.
+ *
+ * This composable provides navigation buttons for moving between onboarding pages, along with a page indicator.
+ * It includes "Previous" and "Next" buttons that update the current onboarding page.
+ *
+ * @param modifier Modifier to apply to the bottom bar.
+ * @param onPreviousClick Callback triggered when the "Previous" button is clicked.
+ * @param onNextClick Callback triggered when the "Next" button is clicked.
+ * @param totalPages The total number of onboarding pages.
+ * @param currentPage The index of the currently displayed page (zero-based).
+ */
 @Composable
-fun OnBoardingBottomBar(
+internal fun OnBoardingBottomBar(
     modifier: Modifier = Modifier,
     onPreviousClick: () -> Unit,
     onNextClick: () -> Unit,

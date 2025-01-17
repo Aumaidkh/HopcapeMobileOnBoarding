@@ -22,8 +22,17 @@ import coil3.request.ImageRequest
 import coil3.svg.SvgDecoder
 import com.hopcape.api.page.OnBoardingPage
 
+/**
+ * Displays an individual onboarding page.
+ *
+ * This composable presents an onboarding page consisting of an illustration, title, and description text.
+ * It ensures a visually appealing layout by centering the content and using appropriate spacing.
+ *
+ * @param modifier Modifier to apply to the onboarding page layout.
+ * @param page The onboarding page data containing the title, body, and illustration image.
+ */
 @Composable
-fun OnBoardingPage(
+internal fun OnBoardingPage(
     modifier: Modifier = Modifier,
     page: OnBoardingPage
 ) {
@@ -35,9 +44,9 @@ fun OnBoardingPage(
         val context = LocalPlatformContext.current
         val imageLoader = ImageLoader.Builder(context)
             .build()
+
         AsyncImage(
-            modifier = Modifier
-                .size(200.dp),
+            modifier = Modifier.size(200.dp),
             model = ImageRequest.Builder(context)
                 .data(page.illustrationImage)
                 .decoderFactory(SvgDecoder.Factory())
@@ -45,6 +54,7 @@ fun OnBoardingPage(
             imageLoader = imageLoader,
             contentDescription = "SVG from Assets"
         )
+
         Text(
             modifier = Modifier
                 .padding(top = 12.dp)
@@ -56,9 +66,9 @@ fun OnBoardingPage(
             ),
             textAlign = TextAlign.Center
         )
+
         Text(
-            modifier = Modifier
-                .padding(vertical = 8.dp),
+            modifier = Modifier.padding(vertical = 8.dp),
             text = page.body,
             style = TextStyle(
                 fontWeight = FontWeight.Normal,

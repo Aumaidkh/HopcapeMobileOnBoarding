@@ -1,5 +1,6 @@
-package com.hopcape.di
+package com.hopcape.di.container
 
+import com.hopcape.di.factory.OnBoardingDependencyFactory
 import com.hopcape.onboarding.data.local.OnBoardingPreferences
 import com.hopcape.onboarding.data.local.datasource.BooleanKeyValueStorage
 import com.hopcape.onboarding.presentation.OnBoardingViewModelFactory
@@ -42,7 +43,7 @@ internal object OnBoardingModule : OnBoardingDiContainer {
      *         is found for the provided class.
      */
     override fun <T> get(clazz: KClass<*>): T {
-        if (!::dependencyGraph.isInitialized) {
+        if (!OnBoardingModule::dependencyGraph.isInitialized) {
             throw IllegalStateException("Dependency Graph is not initialized")
         }
 
@@ -61,7 +62,7 @@ internal object OnBoardingModule : OnBoardingDiContainer {
      *        This factory provides the actual implementations of the dependencies needed for
      *        onboarding, such as storage preferences and view models.
      */
-    fun setDependencyFactory(onBoardingDependencyFactory: OnBoardingDependencyFactory) {
+    internal fun setDependencyFactory(onBoardingDependencyFactory: OnBoardingDependencyFactory) {
         with(onBoardingDependencyFactory) {
             dependencyGraph = mutableMapOf()
             dependencyGraph[OnBoardingPreferences::class] = createOnBoardingPreferences()

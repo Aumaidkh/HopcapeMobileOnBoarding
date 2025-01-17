@@ -1,25 +1,38 @@
 package com.hopcape.api.config
 
 import androidx.compose.ui.graphics.Color
+import com.hopcape.api.launcher.OnBoardingLauncher
 import com.hopcape.api.page.OnBoardingPage
 import com.hopcape.api.theme.OnBoardingTheme
+import com.hopcape.di.container.OnBoardingModule
+import com.hopcape.onboarding.data.local.datasource.BooleanKeyValueStorage
 
 /**
- * Represents the configuration for the onboarding flow.
+ * Configuration class for the onboarding flow.
  *
- * @property onBoardingPages A list of pages to display in the onboarding flow.
- * @property theme The visual theme to be applied to the onboarding screens.
+ * [OnBoardingConfig] defines the structure and customization options for the onboarding experience.
+ * It allows specifying the onboarding pages, theme, storage mechanism, and launcher.
+ *
+ * @property onBoardingPages A list of [OnBoardingPage] instances representing the onboarding screens.
+ * @property theme The [OnBoardingTheme] that defines the visual styling of the onboarding flow.
+ * @property keyValueStorage The storage mechanism ([BooleanKeyValueStorage]) for persisting onboarding-related data.
+ *                           It is retrieved via [OnBoardingModule].
+ * @property onBoardingLauncher An optional [OnBoardingLauncher] responsible for launching the onboarding flow.
  */
 data class OnBoardingConfig(
     val onBoardingPages: List<OnBoardingPage>,
-    val theme: OnBoardingTheme
+    val theme: OnBoardingTheme,
+    val keyValueStorage: BooleanKeyValueStorage? = runCatching<BooleanKeyValueStorage?> { OnBoardingModule.get(BooleanKeyValueStorage::class) }.getOrNull(),
+    val onBoardingLauncher: OnBoardingLauncher? = null
 )
 
 /**
  * Retrieves the primary color defined in the onboarding configuration theme.
  *
- * @receiver The optional onboarding configuration.
- * @return The primary color if available; otherwise, a default color (Green).
+ * If the configuration is `null`, a default primary color (Green) is returned.
+ *
+ * @receiver The optional [OnBoardingConfig] instance.
+ * @return The primary color from the theme, or Green if unavailable.
  */
 fun OnBoardingConfig?.primaryColor(): Color {
     return this?.theme?.primaryColor ?: Color.Green
@@ -28,8 +41,10 @@ fun OnBoardingConfig?.primaryColor(): Color {
 /**
  * Retrieves the secondary color defined in the onboarding configuration theme.
  *
- * @receiver The optional onboarding configuration.
- * @return The secondary color if available; otherwise, a default color (Green).
+ * If the configuration is `null`, a default secondary color (Green) is returned.
+ *
+ * @receiver The optional [OnBoardingConfig] instance.
+ * @return The secondary color from the theme, or Green if unavailable.
  */
 fun OnBoardingConfig?.secondaryColor(): Color {
     return this?.theme?.secondaryColor ?: Color.Green
@@ -38,8 +53,10 @@ fun OnBoardingConfig?.secondaryColor(): Color {
 /**
  * Retrieves the background color defined in the onboarding configuration theme.
  *
- * @receiver The optional onboarding configuration.
- * @return The background color if available; otherwise, a default color (Green).
+ * If the configuration is `null`, a default background color (Green) is returned.
+ *
+ * @receiver The optional [OnBoardingConfig] instance.
+ * @return The background color from the theme, or Green if unavailable.
  */
 fun OnBoardingConfig?.background(): Color {
     return this?.theme?.backgroundColor ?: Color.Green

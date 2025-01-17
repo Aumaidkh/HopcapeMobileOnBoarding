@@ -1,9 +1,11 @@
 package com.hopcape.api.config
 
+import com.hopcape.api.launcher.OnBoardingLauncher
 import com.hopcape.api.page.OnBoardingPage
 import com.hopcape.api.theme.DefaultLightTheme
 import com.hopcape.api.theme.OnBoardingTheme
 import com.hopcape.api.theme.OnBoardingThemeBuilder
+import com.hopcape.onboarding.data.local.datasource.BooleanKeyValueStorage
 import dev.mokkery.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -23,32 +25,62 @@ class OnBoardingConfigBuilderTest {
     @Test
     fun `addPages should add an onboarding page to the config`() {
         // Arrange
-        val mockPage = fakeOnBoardingPage()
+        val fakePages = fakeOnBoardingPages()
 
         // Act
-        val config = onBoardingConfigBuilder.addPages(mockPage).build()
+        val config = onBoardingConfigBuilder.addPages(fakePages).build()
 
         // Assert
-        assertEquals(1, config.onBoardingPages.size)
-        assertEquals(mockPage, config.onBoardingPages[0])
+        assertEquals(fakePages.size, config.onBoardingPages.size)
+        repeat(fakePages.size){
+            assertEquals(fakePages[it], config.onBoardingPages[it])
+        }
     }
 
     @Test
     fun `addPages should add multiple onboarding pages to the config`() {
         // Arrange
-        val mockPage1 = fakeOnBoardingPage()
-        val mockPage2 =  fakeOnBoardingPage()
+        val fakePages = fakeOnBoardingPages()
 
         // Act
         val config = onBoardingConfigBuilder
-            .addPages(mockPage1)
-            .addPages(mockPage2)
+            .addPages(fakePages)
             .build()
 
         // Assert
-        assertEquals(2, config.onBoardingPages.size)
-        assertEquals(mockPage1, config.onBoardingPages[0])
-        assertEquals(mockPage2, config.onBoardingPages[1])
+        assertEquals(fakePages.size, config.onBoardingPages.size)
+        repeat(fakePages.size){
+            assertEquals(fakePages[it], config.onBoardingPages[it])
+
+        }
+    }
+
+    @Test
+    fun `addOnBoardingLauncher should set the launcher in the config`() {
+        // Arrange
+        val mockLauncher = mock<OnBoardingLauncher>()
+
+        // Act
+        val config = onBoardingConfigBuilder
+            .addOnBoardingLauncher(mockLauncher)
+            .build()
+
+        // Assert
+        assertEquals(mockLauncher, config.onBoardingLauncher)
+    }
+
+    @Test
+    fun `addKeyValueStorage should set the storage mechanism in the config`() {
+        // Arrange
+        val mockStorage = mock<BooleanKeyValueStorage>()
+
+        // Act
+        val config = onBoardingConfigBuilder
+            .addKeyValueStorage(mockStorage)
+            .build()
+
+        // Assert
+        assertEquals(mockStorage, config.keyValueStorage)
     }
 
     @Test
@@ -80,6 +112,12 @@ class OnBoardingConfigBuilderTest {
         body = "Body ${(0..10).random()}",
         bodyColor = 100L,
         illustrationImage = "file://assets/image.jpg"
+    )
+
+    private fun fakeOnBoardingPages() = listOf(
+        fakeOnBoardingPage(),
+        fakeOnBoardingPage(),
+        fakeOnBoardingPage()
     )
 
 }
