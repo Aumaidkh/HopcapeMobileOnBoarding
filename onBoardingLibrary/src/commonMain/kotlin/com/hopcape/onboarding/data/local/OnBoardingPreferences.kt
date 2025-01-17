@@ -21,7 +21,7 @@ interface OnBoardingPreferences {
      * @return Boolean value indicating the onboarding completion status.
      *         Returns `true` if the onboarding process has been completed, `false` otherwise.
      */
-    suspend fun isOnBoardingCompleted(): Boolean
+    fun isOnBoardingCompleted(): Boolean
 
     /**
      * Sets the onboarding completion status.

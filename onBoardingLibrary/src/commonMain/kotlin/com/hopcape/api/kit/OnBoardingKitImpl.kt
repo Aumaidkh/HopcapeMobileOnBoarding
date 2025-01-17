@@ -82,6 +82,6 @@ internal class OnBoardingKitImpl(
      * @return `true` if the user has already completed onboarding, otherwise `false`.
      */
     private fun isUserAlreadyOnBoarded(): Boolean {
-        return runBlocking { onBoardingPreferences.isOnBoardingCompleted() }
+        return onBoardingPreferences.isOnBoardingCompleted()
     }
 }

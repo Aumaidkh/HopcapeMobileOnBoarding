@@ -52,6 +52,8 @@ kotlin {
             api(libs.datastore)
             api(libs.datastore.preferences)
 
+            api(libs.multiplatform.settings.no.arg)
+
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
@@ -66,6 +68,10 @@ kotlin {
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.turbine)
+        }
+
+        iosMain.dependencies {
+            
         }
     }
 }
@@ -101,7 +107,7 @@ mavenPublishing {
     coordinates(
         groupId = "io.github.aumaidkh",
         artifactId = "onboarding-mobile",
-        version = "1.0.3"
+        version = "1.0.4"
     )
 
     pom{

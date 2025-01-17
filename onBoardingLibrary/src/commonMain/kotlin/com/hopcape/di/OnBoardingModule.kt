@@ -1,7 +1,7 @@
 package com.hopcape.di
 
 import com.hopcape.onboarding.data.local.OnBoardingPreferences
-import com.hopcape.onboarding.data.local.OnBoardingStorageGenerator
+import com.hopcape.onboarding.data.local.datasource.BooleanKeyValueStorage
 import com.hopcape.onboarding.presentation.OnBoardingViewModelFactory
 import kotlin.reflect.KClass
 
@@ -9,12 +9,17 @@ import kotlin.reflect.KClass
  * A singleton object that serves as the dependency container for onboarding-related services.
  *
  * The [OnBoardingModule] object manages the dependency graph and provides instances of dependencies
- * required for the onboarding process. It follows the [OnBoardingDiContainer] interface to retrieve
- * and store dependencies by their class type.
+ * required for the onboarding process. It implements the [OnBoardingDiContainer] interface to allow
+ * dependencies to be retrieved by their class type, enabling easy access to required services
+ * throughout the onboarding process.
  *
- * Dependencies are registered using the [setDependencyFactory] function and can be retrieved using
- * the [get] function. The module ensures that the correct instances are available for onboarding
- * tasks, such as managing preferences and storage generators.
+ * Dependencies are registered using the [setDependencyFactory] function, which initializes the
+ * dependency graph with the required services. Once initialized, the dependencies can be retrieved
+ * using the [get] function. This ensures that all necessary components, such as preferences and
+ * storage generators, are available when needed.
+ *
+ * This module is a key part of the onboarding system and facilitates the separation of concerns
+ * by centralizing the management and provision of dependencies.
  *
  * @author Murtaza Khursheed
  *
@@ -49,15 +54,18 @@ internal object OnBoardingModule : OnBoardingDiContainer {
      * Sets the dependency factory for the onboarding module and registers dependencies.
      *
      * This function initializes the dependency graph by adding the onboarding-related
-     * dependencies such as [OnBoardingPreferences] and [OnBoardingStorageGenerator] to the container.
+     * dependencies such as [OnBoardingPreferences], [BooleanKeyValueStorage], and [OnBoardingViewModelFactory]
+     * to the container. It ensures that these dependencies are available for use when requested.
      *
      * @param onBoardingDependencyFactory The factory used to create onboarding dependencies.
+     *        This factory provides the actual implementations of the dependencies needed for
+     *        onboarding, such as storage preferences and view models.
      */
     fun setDependencyFactory(onBoardingDependencyFactory: OnBoardingDependencyFactory) {
         with(onBoardingDependencyFactory) {
             dependencyGraph = mutableMapOf()
             dependencyGraph[OnBoardingPreferences::class] = createOnBoardingPreferences()
-            dependencyGraph[OnBoardingStorageGenerator::class] = createOnBoardingDatastoreGenerator()
+            dependencyGraph[BooleanKeyValueStorage::class] = createOnBoardingKeyValueStorage()
             dependencyGraph[OnBoardingViewModelFactory::class] = OnBoardingViewModelFactory(createOnBoardingPreferences())
         }
     }
